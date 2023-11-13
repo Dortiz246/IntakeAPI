@@ -10,15 +10,19 @@ default: &default
   timeout: 5000
  
   <<: *default
-  database: CS673-patient-intake\form\db\development.sqlite3
+  database: C:\Users\sinri\Downloads\Fall 2023 Classes\Software Design and Production Methodology\CS673-patient-intake\form\db\development.sqlite3
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: CS673-patient-intake\form\db\development.sqlite3
+  database: C:\Users\sinri\Downloads\Fall 2023 Classes\Software Design and Production Methodology\CS673-patient-intake\form\db\development.sqlite3
 
 production:
   <<: *default
-  database: CS673-patient-intake\form\db\development.sqlite3
+  database: C:\Users\sinri\Downloads\Fall 2023 Classes\Software Design and Production Methodology\CS673-patient-intake\form\db\development.sqlite3
+
+development:
+  <<: *default
+  database: C:\Users\sinri\Downloads\Fall 2023 Classes\Software Design and Production Methodology\CS673-patient-intake\form\db\development.sqlite3

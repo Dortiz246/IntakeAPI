@@ -1,26 +1,30 @@
 require 'date'
 
-class PatientsAPIController < ApplicationController
+class PatientsApiController < ApplicationController
     before_action :set_patient, only: [:show, :update, :destroy]
 
     
     def index #Method that is called when index view is rendered
-        @patients = Patient.all
+        @patients = PatientAPI.all
         render json: @patients
     end
 
     def create # Method that is called when a patient is created
-        @patient = Patient.new(patient_params)
+        @patient = PatientAPI.new(patient_params)
 
         if @patient.save
-            render json: @patient, status: :created, location: @patient
+            render json: @patient, status: :created
         else
             render json: @patient.errors, status: :unprocessable_entity
         end
     end
 
     def show # Method that is called when show view is rendered
-        render json: @patient
+        if @patient
+         render json: @patient
+        else
+            render json: { error: "Patient not found" }, status: :not_found
+        end
     end
 
     def destroy # Method that is called when a patient is deleted
@@ -30,6 +34,7 @@ class PatientsAPIController < ApplicationController
     end
 
     def update # Method that is called when a patient is updated
+        patient = PatientAPI.find(params[:id])
         if @patient.update(patient_params)
             render json: @patient
         else
@@ -40,10 +45,10 @@ class PatientsAPIController < ApplicationController
     private
     
     def patient_params
-        params.require(:patient).permit(:first_name, :last_name, :date_of_birth, :phone_number, :address, :city, :state, :zip_code)
+        params.require(:patient).permit(:first_name, :last_name, :dob, :phone_number, :address, :city, :state, :zip_code, :email)
     end
 
     def set_patient
-        @patient = Patient.find(params[:id])
+        @patient = PatientAPI.find_by(id: params[:id])
     end
 end

@@ -1,10 +1,9 @@
 Rails.application.routes.draw do
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-  root "patients#index"
+  root "patients_api#index"
   # Defines the root path route ("/")
-  resources :patients, only: [:index, :create, :show, :destroy, :update]
+  resources :patients_api, only: [:index, :create, :show, :destroy, :update]
   # root "articles#index"
-
+  get 'index', to: 'patients_api#index'
   #additional routes for specific actions
-  post 'patients/:id' => 'patients#update'
 end

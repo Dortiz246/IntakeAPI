@@ -1,7 +1,7 @@
-class Patient < ApplicationRecord
+class PatientAPI < ApplicationRecord
     validates :first_name, presence: true
     validates :last_name, presence: true
-    validates :date_of_birth, presence: true
+    validates :dob, presence: true
     validates :phone_number, presence: true
     validates :address, presence: true
     validates :city, presence: true
