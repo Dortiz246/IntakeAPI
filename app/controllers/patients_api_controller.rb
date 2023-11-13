@@ -10,45 +10,45 @@ class PatientsApiController < ApplicationController
     end
 
     def create # Method that is called when a patient is created
-        @patient = PatientApi.new(patient_params)
+        @patient_api = PatientApi.new(patient_api_params)
 
-        if @patient.save
-            render json: @patient, status: :created
+        if @patient_api.save
+            render json: @patient_api, status: :created
         else
-            render json: @patient.errors, status: :unprocessable_entity
+            render json: @patient_api.errors, status: :unprocessable_entity
         end
     end
 
     def show # Method that is called when show view is rendered
-        if @patient
-         render json: @patient
+        if @patient_api
+         render json: @patient_api
         else
             render json: { error: "Patient not found" }, status: :not_found
         end
     end
 
     def destroy # Method that is called when a patient is deleted
-        @patient.destroy
+        @patient_api.destroy
         render json: "Patient deleted successfully!"
         head :no_content
     end
 
     def update # Method that is called when a patient is updated
-        patient = PatientApi.find(params[:id])
-        if @patient.update(patient_params)
-            render json: @patient
+        patient_api = PatientApi.find(params[:id])
+        if @patient_api.update(patient_api_params)
+            render json: @patient_api
         else
-            render json: @patient.errors, status: :unprocessable_entity
+            render json: @patient_api.errors, status: :unprocessable_entity
         end
     end
 
     private
     
-    def patient_params
-        params.require(:patient).permit(:first_name, :last_name, :dob, :phone_number, :address, :city, :state, :zip_code, :email)
+    def patient_api_params
+        params.require(:patient_api).permit(:first_name, :last_name, :dob, :phone_number, :address, :city, :state, :zip_code, :email)
     end
 
-    def set_patient
-        @patient = PatientApi.find_by(id: params[:id])
+    def set_patient_api
+        @patient_api = PatientApi.find(params[:id])
     end
 end
