@@ -5,12 +5,12 @@ class PatientsApiController < ApplicationController
 
     
     def index #Method that is called when index view is rendered
-        @patients = PatientAPI.all
+        @patients = Patient.all
         render json: @patients
     end
 
     def create # Method that is called when a patient is created
-        @patient = PatientAPI.new(patient_params)
+        @patient = Patient.new(patient_params)
 
         if @patient.save
             render json: @patient, status: :created
@@ -34,7 +34,7 @@ class PatientsApiController < ApplicationController
     end
 
     def update # Method that is called when a patient is updated
-        patient = PatientAPI.find(params[:id])
+        patient = Patient.find(params[:id])
         if @patient.update(patient_params)
             render json: @patient
         else
