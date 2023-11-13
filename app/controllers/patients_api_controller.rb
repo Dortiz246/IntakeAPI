@@ -49,6 +49,6 @@ class PatientsApiController < ApplicationController
     end
 
     def set_patient
-        @patient = PatientAPI.find_by(id: params[:id])
+        @patient = Patient.find_by(id: params[:id])
     end
 end
