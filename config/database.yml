@@ -20,8 +20,12 @@ test:
   database: C:\Users\sinri\Downloads\Fall 2023 Classes\Software Design and Production Methodology\CS673-patient-intake\form\db\development.sqlite3
 
 production:
-  <<: *default
-  database: C:\Users\sinri\Downloads\Fall 2023 Classes\Software Design and Production Methodology\CS673-patient-intake\form\db\development.sqlite3
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  database: patient-intake_production
+  username: patient-intake
+  password: <%= ENV['PATIENT-INTAKE_DATABASE_PASSWORD'] %>
 
 development:
   <<: *default
