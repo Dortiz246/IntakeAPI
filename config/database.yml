@@ -9,9 +9,6 @@ default: &default
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   timeout: 5000
  
-  <<: *default
-  database: C:\Users\sinri\Downloads\Fall 2023 Classes\Software Design and Production Methodology\CS673-patient-intake\form\db\development.sqlite3
-
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
@@ -20,12 +17,8 @@ test:
   database: C:\Users\sinri\Downloads\Fall 2023 Classes\Software Design and Production Methodology\CS673-patient-intake\form\db\development.sqlite3
 
 production:
-  adapter: postgresql
-  encoding: unicode
+  url: <%= ENV['DATABASE_URL'] %>
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  database: patient-intake_production
-  username: patient-intake
-  password: <%= ENV['PATIENT-INTAKE_DATABASE_PASSWORD'] %>
 
 development:
   <<: *default
