@@ -1,4 +1,5 @@
 class PatientApi < ApplicationRecord
+    self.table_name = "patients"
     validates :first_name, presence: true
     validates :last_name, presence: true
     validates :dob, presence: true
