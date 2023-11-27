@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_11_13_030328) do
+ActiveRecord::Schema[7.0].define(version: 2023_11_27_034755) do
   create_table "patient_apis", force: :cascade do |t|
     t.string "first_name"
     t.string "middle_name"
@@ -26,6 +26,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_13_030328) do
     t.string "city"
     t.string "state"
     t.integer "zip_code"
+    t.string "disability_type"
+    t.string "race"
+    t.string "ethnicity"
   end
 
   create_table "patients", force: :cascade do |t|
