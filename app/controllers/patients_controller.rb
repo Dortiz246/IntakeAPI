@@ -38,7 +38,7 @@ class PatientsController < ApplicationController
 
     # PUT /patients/:id
     def update  
-        patient = PatientApi.find(params[:id])
+        patient = PatientApi.find_by(id: params[:id])
         if @patient.update(patient_params)
             render json: { patient: @patient }
         else
@@ -53,6 +53,6 @@ class PatientsController < ApplicationController
     end
 
     def set_patient
-        @patient = PatientApi.find(params[:id])
+        @patient = PatientApi.find_by(id: params[:id])
     end
 end
