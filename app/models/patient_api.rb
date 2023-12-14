@@ -4,6 +4,8 @@ class PatientApi < ApplicationRecord
     validates :last_name, presence: true
     validates :dob, presence: true
     validates :phone_number, presence: true
+
+    establish_connection(ENV['DATABASE_URL'])
     #validates :address, presence: true
     #validates :city, presence: true
     #validates :state, presence: true
